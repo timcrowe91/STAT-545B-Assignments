@@ -15,8 +15,8 @@ This assignment first covers making a function (Exercise 1, covered in Week 1), 
 
 ## Setup
 
-1. [ ] Go to canvas to get your invitation to the STAT 545 homework GitHub Organization. You can find this in the description of Assignment 1-B.
-2. [ ] Work within your `assignment-1b` folder in your new repository, and complete the assignment by filling in this very .Rmd file. Your repo will be seeded with instructions for this milestone. Commit and push your work early and often (although this will not be graded, many students end up in situations where they wish they pushed more frequently).
+1. [x] Go to canvas to get your invitation to the STAT 545 homework GitHub Organization. You can find this in the description of Assignment 1-B.
+2. [x] Work within your `assignment-1b` folder in your new repository, and complete the assignment by filling in this very .Rmd file. Your repo will be seeded with instructions for this milestone. Commit and push your work early and often (although this will not be graded, many students end up in situations where they wish they pushed more frequently).
 
 ## Tidy Submission (2 points)
 
@@ -164,6 +164,35 @@ FILL_THIS_IN
     - Add a `verbose` argument (counts as a "special argument" in 1.2), taking a logical input, that keeps the user up-to-date with messages that print to screen as the function is running. This is mostly relevant for functions that could take a long time to run, but for this assignment, it's OK for any multi-line function.
 
 <!------------ Write your function below here -------------->
+
+```{r}
+
+library(tidyverse)
+library(datateachr)
+
+```
+
+```{r}
+
+
+  
+  
+}
+
+```
+
+```{r}
+
+steam_games
+
+```
+
+```{r}
+
+
+
+```
+
 
 
 <!---------------------------------------------------------->
