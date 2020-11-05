@@ -174,8 +174,12 @@ library(datateachr)
 
 ```{r}
 
-
+kw_scatter <- function(data, keyword, column, x, y){
   
+  data %>%
+    filter(grepl(keyword, {{ column }})) %>%
+    ggplot(aes({{ x }}, {{ y }})) +
+    geom_point()
   
 }
 
@@ -183,13 +187,15 @@ library(datateachr)
 
 ```{r}
 
-steam_games
+
+kw_scatter(gapminder, "Dem.", country, lifeExp, gdpPercap)
+kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter)
 
 ```
 
 ```{r}
 
-
+glimpse(vancouver_trees)
 
 ```
 
