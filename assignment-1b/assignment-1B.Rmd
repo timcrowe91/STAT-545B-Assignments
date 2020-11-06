@@ -169,17 +169,21 @@ FILL_THIS_IN
 
 library(tidyverse)
 library(datateachr)
+library(gapminder)
 
 ```
 
 ```{r}
 
-kw_scatter <- function(data, keyword, column, x, y){
-  
-  data %>%
-    filter(grepl(keyword, {{ column }})) %>%
-    ggplot(aes({{ x }}, {{ y }})) +
-    geom_point()
+kw_scatter <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale = FALSE){
+
+    data %>%
+      filter(grepl(keyword, {{ column }})) %>%
+      ggplot(aes({{ x }}, {{ y }})) +
+      geom_point() +
+      {if (xlogscale == TRUE) scale_x_log10()} +
+      {if (ylogscale == TRUE) scale_y_log10()} +
+      theme_bw()
   
 }
 
@@ -187,9 +191,11 @@ kw_scatter <- function(data, keyword, column, x, y){
 
 ```{r}
 
-
 kw_scatter(gapminder, "Dem.", country, lifeExp, gdpPercap)
-kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter)
+kw_scatter(gapminder, "Dem.", country, lifeExp, gdpPercap, xlogscale = TRUE)
+kw_scatter(gapminder, "Dem.", country, lifeExp, gdpPercap, ylogscale = TRUE)
+kw_scatter(gapminder, "Dem.", country, lifeExp, gdpPercap, xlogscale = TRUE, ylogscale = TRUE)
+#kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter)
 
 ```
 
@@ -200,6 +206,35 @@ glimpse(vancouver_trees)
 ```
 
 
+  
+  # if(xlogscale == FALSE && ylogscale == FALSE) return (data %>%
+  #     filter(grepl(keyword, {{ column }})) %>%
+  #     ggplot(aes({{ x }}, {{ y }})) +
+  #     geom_point() +
+  #     theme_bw())
+  # 
+  #   
+  # if(xlogscale == TRUE && ylogscale == FALSE) return (data %>%
+  #     filter(grepl(keyword, {{ column }})) %>%
+  #     ggplot(aes({{ x }}, {{ y }})) +
+  #     geom_point() +
+  #     scale_x_log10() +
+  #     theme_bw())
+  # 
+  # if(xlogscale == FALSE && ylogscale == TRUE) return (data %>%
+  #     filter(grepl(keyword, {{ column }})) %>%
+  #     ggplot(aes({{ x }}, {{ y }})) +
+  #     geom_point() +
+  #     scale_y_log10() +
+  #     theme_bw())
+  # 
+  # if(xlogscale == TRUE && ylogscale == TRUE) return (data %>%
+  #     filter(grepl(keyword, {{ column }})) %>%
+  #     ggplot(aes({{ x }}, {{ y }})) +
+  #     geom_point() +
+  #     scale_x_log10() +
+  #     scale_y_log10() +
+  #     theme_bw())
 
 <!---------------------------------------------------------->
 
