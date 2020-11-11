@@ -133,14 +133,32 @@ What we're looking for in terms of the __format__ of the input and output:
 
 **Description**
 
-FILL_THIS_IN
+This function plots a scatter plot of two variables in a tibble
 
 **Input (Arguments)**
 
+- `data`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
+- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
+  - _Justification_: FILL_THIS_IN
 - `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
   - _Justification_: FILL_THIS_IN
 - ...
-
+kw_scater <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale = FALSE,                             xtrim = 0, ytrim = 0, na.rm = TRUE, ...){
 **Output**
 
 FILL_THIS_IN
@@ -174,7 +192,7 @@ go through function, talk about all decisions (eg why remove na's, justify error
 
 <!------------ Write your function below here -------------->
 
-```{r}
+```{r include = FALSE}
 
 library(tidyverse)
 library(datateachr)
@@ -184,15 +202,15 @@ library(gapminder)
 
 ```{r}
 
-kw_scatter <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale = FALSE,                             xtrim = 0, ytrim = 0){
+kw_scatter <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale = FALSE,                             xtrim = 0, ytrim = 0, na.rm = TRUE, ...){
   
     if(!between(xtrim, 0, 1)) stop("Please choose an xtrim value between 0 and 1")
     if(!between(ytrim, 0, 1)) stop("Please choose an ytrim value between 0 and 1")
-      
+
     data %>%
       filter(grepl(keyword, {{ column }})) %>%
-      drop_na({{ x }}) %>%
-      drop_na({{ y }}) %>%
+      {if (na.rm) drop_na(., {{ x }}) else .} %>%
+      {if (na.rm) drop_na(., {{ y }}) else .} %>%
       {if (xtrim) filter(., between({{ x }}, quantile({{ x }}, xtrim / 2), quantile({{ x }}, 1 - xtrim / 2))) else .} %>%
       {if (ytrim) filter(., between({{ y }}, quantile({{ y }}, ytrim / 2), quantile({{ y }}, 1 - ytrim / 2))) else .} %>%
       ggplot(aes({{ x }}, {{ y }})) +
@@ -200,7 +218,7 @@ kw_scatter <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale
       {if (xlogscale == TRUE) scale_x_log10()} +
       {if (ylogscale == TRUE) scale_y_log10()} +
       theme_bw()
-  
+
 }
 
 ```
@@ -256,17 +274,47 @@ kw_scatter(data = gapminder, keyword = "United", column = country, x = lifeExp, 
 
 kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, ytrim = 0.01)
 
-kw_scatter(data = steam_games, keyword = "Action", column = genre, x = original_price, y = achievements)
+kw_scatter(data = steam_games, keyword = "Action", column = genre, x = original_price, y = achievements, na.rm = FALSE)
 
 kw_scatter(data = steam_games, keyword = "Action", column = genre, x = original_price, y = achievements, xtrim = 0.01)
 
 ```
 
 
+
+
+ TEST TEST
+ 
+```{r include = FALSE}
+
+library(testthat)
+
+```
+
+```{r}
+
+expect_error(kw_scatter(data = gapminder, keyword = "Dem.", column = country, x = lifeExp, y = gdpPercap, xtrim = 10)) # xtrim > 1
+
+expect_error(kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, xtrim = 0.01)) # xtrim doesn't work for date objects
+
+```
+
+
 use expect_error for xtrim = 10, as well as for quantile w/ date
 
+```{r}
 
+kw_test <- steam_games %>%
+  filter(grepl("Action", genre)) %>%
+  drop_na(original_price) %>%
+  drop_na(achievements) %>%
+  ggplot(aes(x = original_price, y = achievements)) +
+  geom_point() +
+  theme_bw()
 
+expect_equal(kw_scatter(data = steam_games, keyword = "Action", column = genre, x = original_price, y = achievements), kw_test)
+
+```
 
 
 <!---------------------------------------------------------->
