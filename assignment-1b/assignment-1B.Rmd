@@ -163,7 +163,11 @@ This function plots a scatter graph of two variables in a tibble, after filterin
 
 The output of the function is a scatter plot using ggplot's `geom_point()`. 
 
+<<<<<<< HEAD
 I don't feel that this requires justification.
+=======
+No justification required.
+>>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 
 <!---------------------------------------------------------->
 
@@ -186,6 +190,8 @@ I don't feel that this requires justification.
     - Add a `verbose` argument (counts as a "special argument" in 1.2), taking a logical input, that keeps the user up-to-date with messages that print to screen as the function is running. This is mostly relevant for functions that could take a long time to run, but for this assignment, it's OK for any multi-line function.
 
 <!------------ Write your function below here -------------->
+
+First load the tidyverse package, used by the function:
 
 ```{r include = FALSE}
 
@@ -232,7 +238,11 @@ I included the error to make sure the inputted trim values are between 0 and 1. 
 | Choice | Your demonstrations aren't redundant; neither are the tests; selected inputs are useful to check | 2 |
 
 - [x] Demonstrate the use of your function, using at least two non-redundant inputs. 
+<<<<<<< HEAD
 - [x] Write formal tests for your function. You should use at least three non-redundant uses of an `expect_()` function from the `testthat` package, and they should be contained in a `test_that()` function (or more than one). 
+=======
+- [ ] Write formal tests for your function. You should use at least three non-redundant uses of an `expect_()` function from the `testthat` package, and they should be contained in a `test_that()` function (or more than one). 
+>>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 
 Example of non-redundant inputs:
 
@@ -249,14 +259,39 @@ Example of redundant inputs:
 
 <!------------ Test your function below here --------------->
 
+<<<<<<< HEAD
+=======
+ First load the packages for this section:
+ 
+>>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 ```{r include = FALSE}
 
 library(datateachr)
 library(gapminder)
 library(testthat)
+<<<<<<< HEAD
 
 ```
 
+#### Demonstration:
+
+```{r}
+
+kw_scatter(data = gapminder, keyword = "United", keyword_column = country, x = lifeExp, y = gdpPercap)
+
+kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, ytrim = 0.01)
+=======
+>>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
+
+kw_scatter(data = steam_games, keyword = "Action", keyword_column = genre, x = original_price, y = achievements, na.rm = FALSE)
+
+<<<<<<< HEAD
+kw_scatter(data = steam_games, keyword = "Action", keyword_column = genre, x = original_price, y = achievements, xtrim = 0.01)
+
+```
+
+#### Function tests:
+=======
 #### Demonstration:
 
 ```{r}
@@ -268,13 +303,17 @@ kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, ytr
 kw_scatter(data = steam_games, keyword = "Action", keyword_column = genre, x = original_price, y = achievements, na.rm = FALSE)
 
 kw_scatter(data = steam_games, keyword = "Action", keyword_column = genre, x = original_price, y = achievements, xtrim = 0.01)
+>>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 
-```
+For these tests, I will use `expect_error()` twice:
 
+<<<<<<< HEAD
+=======
 #### Function tests:
 
 For these tests, I will use `expect_error()` twice:
 
+>>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 * First to make sure an error is thrown when xtrim > 1
 * Next, the trim option should throw an error when used on a datetime object
 
