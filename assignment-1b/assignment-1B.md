@@ -248,11 +248,7 @@ of said tibble
 
 **Input (Arguments)**
 
-<<<<<<< HEAD
   - `data`: The tibble on which the function is being performed
-=======
-  - `data`: The tibble on which the function is being performed on
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
       - *Justification*: Standard naming convention
   - `keyword`: The string that the keyword\_column will be filtered for
       - *Justification*: Name choice makes it clear what the input
@@ -298,11 +294,7 @@ of said tibble
 The output of the function is a scatter plot using ggplot’s
 `geom_point()`.
 
-<<<<<<< HEAD
 I don’t feel that this requires justification.
-=======
-No justification required.
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 
 <!---------------------------------------------------------->
 
@@ -331,11 +323,6 @@ No justification required.
 
 <!------------ Write your function below here -------------->
 
-<<<<<<< HEAD
-=======
-First load the tidyverse package, used by the function:
-
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 #### The function:
 
 ``` r
@@ -377,11 +364,7 @@ required.
 
   - [x] Demonstrate the use of your function, using at least two
     non-redundant inputs.
-<<<<<<< HEAD
   - [x] Write formal tests for your function. You should use at least
-=======
-  - [ ] Write formal tests for your function. You should use at least
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
     three non-redundant uses of an `expect_()` function from the
     `testthat` package, and they should be contained in a `test_that()`
     function (or more than one).
@@ -401,11 +384,6 @@ Example of redundant inputs:
 
 <!------------ Test your function below here --------------->
 
-<<<<<<< HEAD
-=======
-First load the packages for this section:
-
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 #### Demonstration:
 
 ``` r
@@ -519,47 +497,29 @@ Examples:
 
 Your tasks are as follows.
 
-<<<<<<< HEAD
 1.  [x] Make a column of model objects. Do this using the appropriate
-=======
-1.  [ ] Make a column of model objects. Do this using the appropriate
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
     mapping function from the `purrr` package. Note: it’s possible
     you’ll have to make use of nesting, here.
       - For `distplyr`, use a `distplyr::dst_*()` function of your
         choosing, like `dst_norm()` or `dst_step()`. Note that there
         aren’t that many `dst_*()` functions yet, sorry – `distplyr` is
         still quite young.
-<<<<<<< HEAD
 2.  [x] Evaluate the model in a way that interests you. But, you should
-=======
-2.  [ ] Evaluate the model in a way that interests you. But, you should
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
     evaluate something other than a single number for each group. Hint:
     you’ll need to use another `purrr` mapping function again.
       - For `distplyr`, use a distributional representation of your
         choosing, such as quantiles, using the appropriate
         `distplyr::enframe_*()` function.
-<<<<<<< HEAD
 3.  [x] Print out the tibble so far.
 4.  [x] Unnest the resulting calculations, and print your final tibble
     to screen. Make sure your tibble makes sense: column names are
     appropriate, and you’ve gotten rid of columns that no longer make
     sense.
 5.  [x] Don’t just blindly do this exercise: in 1-2 brief sentences,
-=======
-3.  [ ] Print out the tibble so far.
-4.  [ ] Unnest the resulting calculations, and print your final tibble
-    to screen. Make sure your tibble makes sense: column names are
-    appropriate, and you’ve gotten rid of columns that no longer make
-    sense.
-5.  [ ] Don’t just blindly do this exercise: in 1-2 brief sentences,
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
     tell us what you’ve just calculated, and in what column.
 
 <!------------ Put your work here -------------------------->
 
-<<<<<<< HEAD
 I will be fitting a logistic regression model for each of the three
 types of penguin, trying to predict the sex of the penguins based on all
 the variables corresponding to measurements (`bill_length_mm`,
@@ -669,8 +629,6 @@ penguins_model_accuracy %>%
 The model performed best for Gentoo penguins, with 95.8% of predictions
 correct, and worst for Chinstrap penguins, with 91.2% correct.
 
-=======
->>>>>>> f0c71b696169f5c72631713c21e0bbf50b76e897
 <!---------------------------------------------------------->
 
 ### 2.2 (**Optional**, 1 bonus point)
