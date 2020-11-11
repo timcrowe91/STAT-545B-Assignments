@@ -546,14 +546,27 @@ conducting analysis on the results).
     ## 3 Chinstrap <tibble [68 x 5]>  <glm>
 
 Now we have the generalized linear model, I will use the `augment()`
-function to show the fitted values of the model. These values are
-numbers between 0 and 1, corresponding to the probability given by the
-model that the entry belongs to `sex_group` 1 (ie the probability that
-the penguin is male).
+function to evaluate the model:
 
 ``` r
 (penguins_model_results <- penguins_model %>%
-  transmute(species, yhat = map(model, function(x) augment(x, type.predict = "response"))) %>%
+  transmute(species, yhat = map(model, function(x) augment(x, type.predict = "response"))))
+```
+
+    ## # A tibble: 3 x 2
+    ##   species   yhat               
+    ##   <fct>     <list>             
+    ## 1 Adelie    <tibble [146 x 11]>
+    ## 2 Gentoo    <tibble [119 x 11]>
+    ## 3 Chinstrap <tibble [68 x 11]>
+
+I can now unnest this tibble to show the fitted values of the model.
+These values are numbers between 0 and 1, corresponding to the
+probability given by the model that the entry belongs to `sex_group` 1
+(ie the probability that the penguin is male).
+
+``` r
+(penguins_model_results <- penguins_model_results %>%
   unnest(yhat) %>%
   select(!c('.resid', '.std.resid', '.hat', '.sigma', '.cooksd')))
 ```
