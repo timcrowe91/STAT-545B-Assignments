@@ -84,16 +84,16 @@ The first three caveats are prone to a penalty of -1 point.
 
 In the space below, document your function:
 
-- [ ] **Description**: In 1-2 brief sentences, describe what the function does. 
+- [x] **Description**: In 1-2 brief sentences, describe what the function does. 
     - As a model answer, check out the "Description" section (the very first section) in the documentation of an R function that you know and love.
     - Technical language is OK (like "Generalised Linear Model"), but not a step-by-step written account of each line. If you feel the need to add more details, separate these details from the main description. In fact, many functions have a "Details" section in their documentation! Just check out `lm()` as an example -- but don't go overboard like that.
-- [ ] For each **argument**, 
-    - [ ] Write the argument name.
-    - [ ] Describe the input: What restrictions are there -- should it be a vector? A list? A specific type of vector, like numeric? If there's a default value, specify what the default is.
-    - [ ] Briefly justify (1-2 sentences) your choice of name and (if applicable) default value.
-- [ ] For the **output**:
-    - [ ] Describe the object that's returned. Is it a vector? A list? Is it a numeric vector? What does the object represent?
-    - [ ] Briefly justify (1-2 sentences) your choice of output format.
+- [x] For each **argument**, 
+    - [x] Write the argument name.
+    - [x] Describe the input: What restrictions are there -- should it be a vector? A list? A specific type of vector, like numeric? If there's a default value, specify what the default is.
+    - [x] Briefly justify (1-2 sentences) your choice of name and (if applicable) default value.
+- [x] For the **output**:
+    - [x] Describe the object that's returned. Is it a vector? A list? Is it a numeric vector? What does the object represent?
+    - [x] Briefly justify (1-2 sentences) your choice of output format.
 
 Here's an elaboration on the rubrics:
 
@@ -133,42 +133,37 @@ What we're looking for in terms of the __format__ of the input and output:
 
 **Description**
 
-This function plots a scatter plot of two variables in a tibble
+This function plots a scatter graph of two variables in a tibble, after filtering for a certain keyword / string contained in a character column of said tibble
 
 **Input (Arguments)**
 
-- `data`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
-- `FILL_IN_ARGUMENT_NAME`: FILL_IN_WITH_DESCRIPTION
-  - _Justification_: FILL_THIS_IN
+- `data`: The tibble on which the function is being performed on
+  - _Justification_: Standard naming convention
+- `keyword`: The string that the keyword_column will be filtered for
+  - _Justification_: Name choice makes it clear what the input should be
+- `keyword_column`: The column that will be filtered to only include entries that contain the keyword. Input should be a character / factor column
+  - _Justification_: Name choice makes it clear what the input should be
+- `x`: The column to use for the x-axis of the plot. Input should be a column that can be used for a scatter graph (eg numeric, datetime)
+  - _Justification_: Standard naming convention
+- `y`: The column to use for the y-axis of the plot. Input should be a column that can be used for a scatter graph (eg numeric, datetime)
+  - _Justification_: Standard naming convention
+- `xlogscale`: Option to use a log-scale on the x-axis, default = FALSE
+  - _Justification_: Name choice makes it clear what the input should be. Default value is FALSE, as using a normal scale as default is clearly the logical choice
+- `ylogscale`: Option to use a log-scale on the y-axis, default = FALSE
+  - _Justification_: As above
+- `xtrim`: Option to trim a certain proportion of the x-axis data (split across either end of the value range). Value should be between 0 and 1, default = 0
+  - _Justification_: Name choice makes it clear what the input should be. Default value is 0, as trimming the data by a certain % as a default wouldn't be logical
+- `ytrim`: Option to trim a certain proportion of the y-axis data (split across either end of the value range). Value should be between 0 and 1, default = 0
+  - _Justification_: As above
+- `na.rm`: Choice of keeping or removing NA values, default = TRUE
+  - _Justification_: Standard naming convention. Default value is TRUE, as ggplot will remove these entries anyway. Choice to keep NA values perhaps could be used if you wish to see how many entries were NAs etc
 - ...
-kw_scater <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale = FALSE,                             xtrim = 0, ytrim = 0, na.rm = TRUE, ...){
+
 **Output**
 
-FILL_THIS_IN
+The output of the function is a scatter plot using ggplot's `geom_point()`. 
 
-
-
-go through function, talk about all decisions (eg why remove na's, justify error (below)) [xtrim = 20 works, but probably not what was desired]
-
-
-
+No justification required.
 
 <!---------------------------------------------------------->
 
@@ -185,30 +180,32 @@ go through function, talk about all decisions (eg why remove na's, justify error
 | Accuracy | Does your function do what you intended it to do, as per your documentation? | 2 |
 | Messages | Are your messages well-placed in the function, and informative? | 1 |
 
-- [ ] Write your function in the space below, in a code chunk.
-- [ ] Implement at least one of these two message-bearing methods, using conditionals (`if` statements) to do so:
+- [x] Write your function in the space below, in a code chunk.
+- [x] Implement at least one of these two message-bearing methods, using conditionals (`if` statements) to do so:
     - Add useful error messages or warnings: use the `stop()` or `warning()` function in an `if` statement. Ensure the message is informative. In one or two brief sentences: Why did you choose what you chose -- i.e., warning or stop?
     - Add a `verbose` argument (counts as a "special argument" in 1.2), taking a logical input, that keeps the user up-to-date with messages that print to screen as the function is running. This is mostly relevant for functions that could take a long time to run, but for this assignment, it's OK for any multi-line function.
 
 <!------------ Write your function below here -------------->
 
+First load the tidyverse package, used by the function:
+
 ```{r include = FALSE}
 
 library(tidyverse)
-library(datateachr)
-library(gapminder)
 
 ```
 
+#### The function:
+
 ```{r}
 
-kw_scatter <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale = FALSE,                             xtrim = 0, ytrim = 0, na.rm = TRUE, ...){
+kw_scatter <- function(data, keyword, keyword_column, x, y, xlogscale = FALSE, ylogscale = FALSE,                             xtrim = 0, ytrim = 0, na.rm = TRUE, ...){
   
     if(!between(xtrim, 0, 1)) stop("Please choose an xtrim value between 0 and 1")
     if(!between(ytrim, 0, 1)) stop("Please choose an ytrim value between 0 and 1")
 
     data %>%
-      filter(grepl(keyword, {{ column }})) %>%
+      filter(grepl(keyword, {{ keyword_column }})) %>%
       {if (na.rm) drop_na(., {{ x }}) else .} %>%
       {if (na.rm) drop_na(., {{ y }}) else .} %>%
       {if (xtrim) filter(., between({{ x }}, quantile({{ x }}, xtrim / 2), quantile({{ x }}, 1 - xtrim / 2))) else .} %>%
@@ -223,19 +220,7 @@ kw_scatter <- function(data, keyword, column, x, y, xlogscale = FALSE, ylogscale
 
 ```
 
-```{r}
-
-kw_scatter(data = gapminder, keyword = "Dem.", column = country, x = lifeExp, y = gdpPercap)
-
-kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, ytrim = 0.01)
-
-
-```
-
-```{r}
-glimpse(vancouver_trees)
-```
-
+I included the error to make sure the inputted trim values are between 0 and 1. A trim value of less than 0 would give an error anyway, however a value of greater than 1 would not (it would, however, remove all the data - making the output of the function redundant). I think this error is useful, as it could be the case that someone who wanted to trim 5% of their data might accidentally input the trim value as 5, not 0.05 as required.
 
 
 <!---------------------------------------------------------->
@@ -248,7 +233,7 @@ glimpse(vancouver_trees)
 |--------|-------------|--------|
 | Choice | Your demonstrations aren't redundant; neither are the tests; selected inputs are useful to check | 2 |
 
-- [ ] Demonstrate the use of your function, using at least two non-redundant inputs. 
+- [x] Demonstrate the use of your function, using at least two non-redundant inputs. 
 - [ ] Write formal tests for your function. You should use at least three non-redundant uses of an `expect_()` function from the `testthat` package, and they should be contained in a `test_that()` function (or more than one). 
 
 Example of non-redundant inputs:
@@ -266,41 +251,38 @@ Example of redundant inputs:
 
 <!------------ Test your function below here --------------->
 
-```{r}
-
-kw_scatter(data = gapminder, keyword = "Dem.", column = country, x = lifeExp, y = gdpPercap)
-
-kw_scatter(data = gapminder, keyword = "United", column = country, x = lifeExp, y = gdpPercap)
-
-kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, ytrim = 0.01)
-
-kw_scatter(data = steam_games, keyword = "Action", column = genre, x = original_price, y = achievements, na.rm = FALSE)
-
-kw_scatter(data = steam_games, keyword = "Action", column = genre, x = original_price, y = achievements, xtrim = 0.01)
-
-```
-
-
-
-
- TEST TEST
+ First load the packages for this section:
  
 ```{r include = FALSE}
 
+library(datateachr)
+library(gapminder)
 library(testthat)
 
 ```
 
+#### Demonstration:
+
 ```{r}
 
-expect_error(kw_scatter(data = gapminder, keyword = "Dem.", column = country, x = lifeExp, y = gdpPercap, xtrim = 10)) # xtrim > 1
+kw_scatter(data = gapminder, keyword = "United", keyword_column = country, x = lifeExp, y = gdpPercap)
 
-expect_error(kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, xtrim = 0.01)) # xtrim doesn't work for date objects
+kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, ytrim = 0.01)
+
+kw_scatter(data = steam_games, keyword = "Action", keyword_column = genre, x = original_price, y = achievements, na.rm = FALSE)
+
+kw_scatter(data = steam_games, keyword = "Action", keyword_column = genre, x = original_price, y = achievements, xtrim = 0.01)
 
 ```
 
+#### Function tests:
 
-use expect_error for xtrim = 10, as well as for quantile w/ date
+For these tests, I will use `expect_error()` twice:
+
+* First to make sure an error is thrown when xtrim > 1
+* Next, the trim option should throw an error when used on a datetime object
+
+I will then create a ggplot object from scratch below, and use `expect_equal()` to make sure the corresponding `kw_scatter()` function matches it
 
 ```{r}
 
@@ -312,7 +294,21 @@ kw_test <- steam_games %>%
   geom_point() +
   theme_bw()
 
-expect_equal(kw_scatter(data = steam_games, keyword = "Action", column = genre, x = original_price, y = achievements), kw_test)
+```
+
+Now the tests:
+
+```{r}
+
+test_that("kw_scatter tests", {
+  
+  expect_error(kw_scatter(data = gapminder, keyword = "Dem.", keyword_column = country, x = lifeExp, y = gdpPercap, xtrim = 10))
+
+  expect_error(kw_scatter(vancouver_trees, "JAPANESE", common_name, date_planted, diameter, xtrim = 0.01))
+  
+  expect_equal(kw_scatter(data = steam_games, keyword = "Action", keyword_column = genre, x = original_price, y = achievements), kw_test)
+  
+})
 
 ```
 
