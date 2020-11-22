@@ -1,7 +1,8 @@
 ---
 title: "Assignment 3-B"
 subtitle: "Version 1.0" 
-output: html_document
+output: github_document
+author: "Tim Crowe"
 ---
 
 + __Leader__: Iciar Fernandez
