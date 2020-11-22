@@ -14,6 +14,8 @@ options(shiny.autoreload = TRUE)
 ui <- fluidPage(
     
     titlePanel("Distribution of Life Expectancies"),
+
+    img(src = "Africa.bmp", align = "left"),
     
     sliderInput("filterYear", 
                 label = "Select Year",
