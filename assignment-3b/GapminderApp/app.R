@@ -14,43 +14,60 @@ options(shiny.autoreload = TRUE)
 ui <- fluidPage(
     
     titlePanel("Distribution of Life Expectancies"),
-
-    img(src = "Africa.bmp", align = "left"),
-    
-    sliderInput("filterYear", 
-                label = "Select Year",
-                min = 1952,
-                max = 2007,
-                value = 2007,
-                step = 5,
-                sep = ""),
-    
-    selectInput("filterContinent",
-                "Choose a Continent", 
-                choices = continents,
-                selected = "All Continents"),
-    
-    
-    # placeholder linking ui to server to create plot, "plot" id / tag called later
-    plotOutput("plot")
-    
+ 
+    sidebarLayout(
+        
+        sidebarPanel(
+            
+            sliderInput("filterYear", 
+                        label = "Select Year",
+                        min = 1952,
+                        max = 2007,
+                        value = 2007,
+                        step = 5,
+                        sep = ""),
+            
+            selectInput("filterContinent",
+                        "Choose a Continent", 
+                        choices = continents,
+                        selected = "All Continents"),
+            
+            imageOutput("map")
+            
+        ),
+        
+        mainPanel(
+            
+            plotOutput("plot")
+            
+        )
+    )
 )
 
 # Define server logic 
 server <- function(input, output) {
     
-    output$plot <- renderPlot({
+    output$map<- renderImage({
         
+        image_name = paste("www/", input$filterContinent, ".png", sep = "")
+        list(src = image_name, width = 340, height = 155)
+        
+    }, deleteFile = FALSE)
+        
+
+
+    output$plot <- renderPlot({
+
         gapminder_filtered <- gapminder %>%
             {if (input$filterContinent != "All Continents") filter(., continent == input$filterContinent) else .} %>%
             filter(year == input$filterYear)
-        
+
         ggplot(gapminder_filtered, aes(lifeExp)) +
             geom_histogram(aes(xmin = 20, xmax = 90, binwidth = 5)) +
-            theme_bw() + 
+            theme_bw() +
             labs(x = "Life Expectancy", y = "")
-        
-    })
+
+    }, width = 700, height = 400)
     
     
 }
