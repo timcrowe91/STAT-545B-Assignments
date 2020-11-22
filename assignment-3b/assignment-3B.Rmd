@@ -119,3 +119,12 @@ Follow these steps to submit your work. Be sure to familiarize yourself with the
 
 **Submit the link to your tagged release in Canvas when you have finished all of the above and your assignment.**
 
+
+```{r}
+library(gapminder)
+gapminder %>%
+  count(continent)
+
+```
+
+
