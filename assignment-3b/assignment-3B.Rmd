@@ -88,7 +88,7 @@ Here are some examples of apps built with Shiny - we don't expect you to achieve
 
 Follow these steps to submit your work. Be sure to familiarize yourself with the rubric for a tidy submission below, before doing these steps.
 
-- [ ] (1 pts) Update your main `README` for your _assignment repository_ (i.e. `stat-545b-assignments-GitHub-Username`) **with a link to a running instance of your Shiny app.** 
+- [x] (1 pts) Update your main `README` for your _assignment repository_ (i.e. `stat-545b-assignments-GitHub-Username`) **with a link to a running instance of your Shiny app.** 
 - [ ] (3 pts) Make a `README` within your `assignment-3b` folder. The README must include:
   - Your choice of assignment clearly stated: Option A - BC Liquor app, or Option B - your own Shiny app.
   - A description of your app. In the case of Option A, write about what makes your app different from the "basic" version after implementing your chosen features.
@@ -106,25 +106,18 @@ Follow these steps to submit your work. Be sure to familiarize yourself with the
     - [ ] There's at least one change to the UI (aside from the addition of a widget). (4 pts)
     - [ ] A third feature, whether it's a change to the UI, or a functional widget. (4 pts)
   - **Option B:** Create your own shiny app with three features, and deploy it.
-    - [ ] Feature 1. (4 pts)
-    - [ ] Feature 2. (4 pts)
-    - [ ] Feature 3. (4 pts)
+    - [x] Feature 1. (4 pts)
+    - [x] Feature 2. (4 pts)
+    - [x] Feature 3. (4 pts)
   - *What are we looking for in your features?*
      + *Variety.* Including three tables as part of your dashboard and having the same exact feature for each of them (e.g. a filtering option, even if the tables are distinct) will be penalized; at least 2 of the 3 features must be unique. 
      + For either option A or B, we will evaluate the *usefulness* of your features in the context of your app (does it add to the user experience?). We expect your features to be sensible, meaning that they add to the user experience in a way that makes sense - as an example, adding a filtering option for "country" in a table that only has data for Canada does not seem very useful, even if you added the filtering feature correctly. If we consider any of your features to be irrelevant for the app, 0.5pts will be penalized for that particular feature.
      
 - RRR (3 pts):
-  - [ ] Code runs without errors and it is appropriately annotated, legible, and easy to follow. (1.5 pts)
-  - [ ] Your app should be deployed online on shinyapps.io (or on another server if you'd like). Make sure your app actually works online (sometimes your app will work in RStudio but will have errors on shinyapps.io - make sure you deploy early and often to make debugging easier). (1.5 pts) 
+  - [x] Code runs without errors and it is appropriately annotated, legible, and easy to follow. (1.5 pts)
+  - [x] Your app should be deployed online on shinyapps.io (or on another server if you'd like). Make sure your app actually works online (sometimes your app will work in RStudio but will have errors on shinyapps.io - make sure you deploy early and often to make debugging easier). (1.5 pts) 
 
 **Submit the link to your tagged release in Canvas when you have finished all of the above and your assignment.**
 
-
-```{r}
-library(gapminder)
-gapminder %>%
-  count(continent)
-
-```
 
 
