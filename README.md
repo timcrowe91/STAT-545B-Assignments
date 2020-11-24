@@ -12,4 +12,4 @@ For this assignment, I created an R package and used a separate repository to th
 
 ### Assigment 3
 
-For this assignment, I created a shiny app which can be found ______________. More details can be found in the "assignment-3b" repository.
+For this assignment, I created a shiny app which can be found [here](https://timcrowe91.shinyapps.io/GapminderApp/). More details can be found in the "assignment-3b" repository.

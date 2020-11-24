@@ -1,0 +1,12 @@
+name: GapminderApp
+title: GapminderApp
+username:
+account: timcrowe91
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3295146
+bundleId: 3900222
+url: https://timcrowe91.shinyapps.io/GapminderApp/
+when: 1606232887.51822
+asMultiple: FALSE
+asStatic: FALSE
