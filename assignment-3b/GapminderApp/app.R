@@ -68,6 +68,12 @@ ui <- fluidPage(
 # Define server logic 
 server <- function(input, output) {
     
+    gapminder_filtered <- reactive({
+        gapminder %>%
+            {if (input$filterContinent != "All Continents") filter(., continent == input$filterContinent) else .} %>%
+            filter(year == input$filterYear)
+    })
+    
     # The first output I define is a picture of the world map, with the chosen continent highlighted
     # This is purely for aesthetics, and I think it fits in well in the sidebar along with the inputs
     
@@ -87,11 +93,7 @@ server <- function(input, output) {
 
     output$plot <- renderPlot({
 
-        gapminder_filtered <- gapminder %>%
-            {if (input$filterContinent != "All Continents") filter(., continent == input$filterContinent) else .} %>%
-            filter(year == input$filterYear)
-
-        ggplot(gapminder_filtered, aes(lifeExp)) +
+        ggplot(gapminder_filtered(), aes(lifeExp)) +
             geom_density(aes(xmin = 20, xmax = 100), fill = "grey") +
             geom_vline(aes(xintercept=median(lifeExp)), color="purple3", linetype = "dashed", size = 1) +
             geom_vline(aes(xintercept=quantile(lifeExp, 0.25)), color="purple3", linetype = "dashed", size = 0.6) +
@@ -107,41 +109,25 @@ server <- function(input, output) {
     
     output$mean <- renderText({
         
-        gapminder_filtered <- gapminder %>%
-            {if (input$filterContinent != "All Continents") filter(., continent == input$filterContinent) else .} %>%
-            filter(year == input$filterYear)
-        
-        paste("Mean life expectancy:", round(mean(gapminder_filtered$lifeExp), digits = 1), "years", sep = " ")
+        paste("Mean life expectancy:", round(mean(gapminder_filtered()$lifeExp), digits = 1), "years", sep = " ")
 
     })
     
     output$median <- renderText({
-        
-        gapminder_filtered <- gapminder %>%
-            {if (input$filterContinent != "All Continents") filter(., continent == input$filterContinent) else .} %>%
-            filter(year == input$filterYear)
-        
-        paste("Median life expectancy:", round(median(gapminder_filtered$lifeExp), digits = 1), "years", sep = " ")
+
+        paste("Median life expectancy:", round(median(gapminder_filtered()$lifeExp), digits = 1), "years", sep = " ")
         
     })
     
     output$firstquart <- renderText({
         
-        gapminder_filtered <- gapminder %>%
-            {if (input$filterContinent != "All Continents") filter(., continent == input$filterContinent) else .} %>%
-            filter(year == input$filterYear)
-        
-        paste("First quartile:", round(quantile(gapminder_filtered$lifeExp, 0.25), digits = 1), "years", sep = " ")
+        paste("First quartile:", round(quantile(gapminder_filtered()$lifeExp, 0.25), digits = 1), "years", sep = " ")
         
     })
     
     output$thirdquart <- renderText({
         
-        gapminder_filtered <- gapminder %>%
-            {if (input$filterContinent != "All Continents") filter(., continent == input$filterContinent) else .} %>%
-            filter(year == input$filterYear)
-        
-        paste("Third quartile:", round(quantile(gapminder_filtered$lifeExp, 0.75), digits = 1), "years", sep = " ")
+        paste("Third quartile:", round(quantile(gapminder_filtered()$lifeExp, 0.75), digits = 1), "years", sep = " ")
         
     })
 }
