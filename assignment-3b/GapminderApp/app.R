@@ -18,9 +18,9 @@ ui <- fluidPage(
         
         sidebarPanel(
             
-            h5("Using figures from the 'Gapminder' dataset, this app plots a density graph of life expectancies, and shows where the 1st, 2nd and 3rd quartiles lie."),
+            h5("Using data from the 'Gapminder' package, this app plots a density graph of life expectancies across different countries for a certain year, and shows where the 1st, 2nd and 3rd quartiles lie."),
             
-            h5("You can use the slider to change the year you want to look at, and can choose to highlight a specific continent"),
+            h5("You can use the slider to change the year you want to look at, and can choose to only consider data from countries of a selected continent"),
             
             # The first input is a slider allowing the user to choose which year to look at, allowing..
             # the user to scroll through and see the progression on the outputted plot
@@ -74,7 +74,7 @@ server <- function(input, output) {
     output$map<- renderImage({
         
         image_name = paste("www/", input$filterContinent, ".png", sep = "")
-        list(src = image_name, width = 340, height = 155)
+        list(src = image_name, width = "100%", height = "46%")
         
     }, deleteFile = FALSE)
         
@@ -99,7 +99,7 @@ server <- function(input, output) {
             theme_bw() +
             labs(x = "Life Expectancy", y = "")
 
-    }, width = 700, height = 400)
+    })
     
     
     # Below here are the 4 text outputs: they give the values for mean, median, 1st and 3rd quartiles
