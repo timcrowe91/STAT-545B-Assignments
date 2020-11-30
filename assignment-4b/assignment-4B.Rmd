@@ -1,7 +1,8 @@
 ---
 title: "Assignment 4-B: Automating Data-analysis Pipelines"
 subtitle: "Version 1.0.0" 
-output: html_document
+author: "Tim Crowe"
+output: github_document
 ---
 
 __Deadline__: **Friday**, December 4, 2020
