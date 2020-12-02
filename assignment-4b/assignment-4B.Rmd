@@ -30,7 +30,7 @@ We've made a pull request on your repositories containing the [starting point](h
 
 Follow these steps to submit your work. Be sure to familiarize yourself with the rubric for a tidy submission below, before doing these steps.
 
-1. [ ] Create a README file in your `assignment-4b` folder. It should let a visitor know what's in this folder.
+1. [x] Create a README file in your `assignment-4b` folder. It should let a visitor know what's in this folder.
 2. [ ] Create/update a main README file for your entire repository. It should orient a visitor to what this repository _is_, and that visitor should know how to engage with the repository. There should not be much here.
 3. [ ] Check that your assignment appears nicely rendered and viewable online, such as by changing the output to `output: github_document` in the YAML header. 
     - You could also use GitHub pages. But, the assignment needs to correspond to the tagged release, and we still need to be able to navigate to your repository somehow.
@@ -41,7 +41,7 @@ Follow these steps to submit your work. Be sure to familiarize yourself with the
 
 ## Exercise 1: Warmup (2 points)
 
-1. [ ] Independently from any Makefile, indicate the code that you would run in the command line (Terminal) in order to run an `.R` file _in the background_, so that you can close your Terminal and have the code still run. Add this to the README in your `assignment-4b` folder. (2 points)
+1. [x] Independently from any Makefile, indicate the code that you would run in the command line (Terminal) in order to run an `.R` file _in the background_, so that you can close your Terminal and have the code still run. Add this to the README in your `assignment-4b` folder. (2 points)
 
 
 ## Exercise 2: Makefile Step by Step Instructions (14 marks)
