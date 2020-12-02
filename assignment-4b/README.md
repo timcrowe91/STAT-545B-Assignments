@@ -6,7 +6,7 @@ The original Make activity was put together by Jenny Bryan's STAT 545 team befor
 
 ## Exercise 1
 
-*Independently from any Makefile, indicate the code that you would run in the command line (Terminal) in order to run an `.R` file _in the background_, so that you can close your Terminal and have the code still run. Add this to the README in your `assignment-4b` folder.*
+*Independently from any Makefile, indicate the code that you would run in the command line (Terminal) in order to run an `.R` file _in the background_, so that you can close your Terminal and have the code still run.*
 
 The code needed to run an .R file in the background is:
 
