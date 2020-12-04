@@ -448,6 +448,8 @@ test_that("kw_scatter tests", {
 })
 ```
 
+    ## Test passed
+
 <!---------------------------------------------------------->
 
 ### 1.4 (**Optional**, 1 bonus point)
