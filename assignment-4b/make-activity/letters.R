@@ -10,6 +10,8 @@ for (i in 1:26){
   
 }
 
+library(ggplot2)
+
 letters_plot <- ggplot(data = letters_df, aes(x = letters, y = proportion)) +
   geom_bar(stat = "identity") +
   labs(x = "Letter", y = "% of Words") +
