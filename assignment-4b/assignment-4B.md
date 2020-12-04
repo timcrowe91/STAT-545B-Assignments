@@ -33,25 +33,25 @@ of the analysis that you will modify.
 Follow these steps to submit your work. Be sure to familiarize yourself
 with the rubric for a tidy submission below, before doing these steps.
 
-1.  [ ] Create a README file in your `assignment-4b` folder. It should
+1.  [x] Create a README file in your `assignment-4b` folder. It should
     let a visitor know what’s in this folder.
-2.  [ ] Create/update a main README file for your entire repository. It
+2.  [x] Create/update a main README file for your entire repository. It
     should orient a visitor to what this repository *is*, and that
     visitor should know how to engage with the repository. There should
     not be much here.
-3.  [ ] Check that your assignment appears nicely rendered and viewable
+3.  [x] Check that your assignment appears nicely rendered and viewable
     online, such as by changing the output to `output: github_document`
     in the YAML header.
       - You could also use GitHub pages. But, the assignment needs to
         correspond to the tagged release, and we still need to be able
         to navigate to your repository somehow.
-4.  [ ] Tag a release in your GitHub repository corresponding to your
+4.  [x] Tag a release in your GitHub repository corresponding to your
     submission before the deadline.
       - Forgotten how to tag a release? We have instructions at the
         bottom of the [Collaborative Milestone 1
         repo](https://stat545.stat.ubc.ca/collaborative-project/milestone1/readme/)
         from STAT 545A.
-5.  [ ] Grab the URL corresponding to your viewable output from Step 3,
+5.  [x] Grab the URL corresponding to your viewable output from Step 3,
     and submit that to canvas. Also, please let us know what you thought
     of this assignment – any feedback would be appreciated. Follow these
     steps to submit your work. Be sure to familiarize yourself with the
@@ -59,7 +59,7 @@ with the rubric for a tidy submission below, before doing these steps.
 
 ## Exercise 1: Warmup (2 points)
 
-1.  [ ] Independently from any Makefile, indicate the code that you
+1.  [x] Independently from any Makefile, indicate the code that you
     would run in the command line (Terminal) in order to run an `.R`
     file *in the background*, so that you can close your Terminal and
     have the code still run. Add this to the README in your
@@ -67,10 +67,10 @@ with the rubric for a tidy submission below, before doing these steps.
 
 ## Exercise 2: Makefile Step by Step Instructions (14 marks)
 
-1.  [ ] Modify one thing about the seeded analysis (add a file? add
+1.  [x] Modify one thing about the seeded analysis (add a file? add
     another output file?), and update the Makefile accordingly. (2
     points)
-2.  [ ] Let us know what it was that you changed in 2. in a couple of
+2.  [x] Let us know what it was that you changed in 2. in a couple of
     sentences in your **Assignment 4B folder README**. (1 point)
 3.  Make a Makefile in the root of your assignment repo (that is,
     outside of the `assignment-4b` folder). Be sure to also include the
@@ -78,16 +78,16 @@ with the rubric for a tidy submission below, before doing these steps.
 
 <!-- end list -->
 
-  - [ ] Make the Makefile in the root so that you can make the
+  - [x] Make the Makefile in the root so that you can make the
     assignments that are present in your repo (use a phony output per
     assignment). (6 points)
       - Your Makefile should be written so that, if a dependency
         changes, running `make` should update the appropriate output
         (and all downstream portions of the pipeline).
-  - [ ] Running `make all` should result in having all output present in
+  - [x] Running `make all` should result in having all output present in
     your repo. (1 point)
-  - [ ] Running `make clean` should remove all output. (1 point)
-  - [ ] There isn’t any useless outputs such as an `Rplots.pdf` file
+  - [x] Running `make clean` should remove all output. (1 point)
+  - [x] There isn’t any useless outputs such as an `Rplots.pdf` file
     (which sometimes arises as a byproduct of running `Rscript`). (1
     point)
   - For Assignment 4-B, you shouldn’t copy and paste *its* Makefile
@@ -95,9 +95,9 @@ with the rubric for a tidy submission below, before doing these steps.
 
 <!-- end list -->
 
-4.  [ ] “Making” Assignment 3-B results in the shiny app being launched.
+4.  [x] “Making” Assignment 3-B results in the shiny app being launched.
     (1 point)
-5.  [ ] List all of the dependencies required for each assignment, in
+5.  [x] List all of the dependencies required for each assignment, in
     the main README, such that it would be easy for someone to install
     these dependencies. (1 point)
 
@@ -111,7 +111,7 @@ with the rubric for a tidy submission below, before doing these steps.
 
 ### Code Quality (2 marks)
 
-  - [ ] Code runs without errors and it is appropriately annotated,
+  - [x] Code runs without errors and it is appropriately annotated,
     legible, and easy to follow. (2 pts)
 
 ## Exercise 3: Bonus (1 point)
