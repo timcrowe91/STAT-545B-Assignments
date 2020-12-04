@@ -18,7 +18,6 @@ report2.html: report2.Rmd letters.png
 	
 letters.png: letters.R words.txt
 	Rscript $<
-	rm Rplots.pdf
 
 
 # words.txt: /usr/share/dict/words
