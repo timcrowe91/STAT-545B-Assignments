@@ -13,3 +13,7 @@ For this assignment, I created an R package and used a separate repository to th
 ### Assigment 3
 
 For this assignment, I created a shiny app which can be found [here](https://timcrowe91.shinyapps.io/GapminderApp/). More details can be found in the "assignment-3b" repository.
+
+### Assigment 4
+
+This assignment was based on automation, and the majority was working with Makefiles, including creating a Makefile in the root of the assignment repo. More details can be found in the "assignment-4b" repository.

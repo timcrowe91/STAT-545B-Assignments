@@ -18,3 +18,9 @@ Where:
 * `nohup` makes the code run in the background
 * `> log.out 2>&1` records output to log.out
 * `&` (at the end) frees your terminal
+
+## Exercise 2
+
+*Modify one thing about the seeded analysis (add a file? add another output file?), and update the Makefile accordingly*
+
+I added a bar plot which shows the proportion of words that contain each letter of the alphabet. I put the results in a 2nd report (report2.md).
