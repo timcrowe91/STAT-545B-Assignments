@@ -1,4 +1,4 @@
-all: assignment1 assignment3
+all: assignment1 assignment3 assignment4
 
 clean:
 	rm -f assignment-1b/assignment-1B.md
