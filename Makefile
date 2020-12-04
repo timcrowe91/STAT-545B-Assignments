@@ -1,4 +1,4 @@
-all: assignment1 assignment3 assignment4
+all: assignment1 assignment2 assignment3 assignment4
 
 clean:
 	rm -f assignment-1b/assignment-1B.md
@@ -11,6 +11,9 @@ clean:
 assignment1: 
 	Rscript -e "library(rmarkdown); render('assignment-1b/assignment-1B.Rmd')"
 	rm assignment-1b/assignment-1B.html
+	
+assignment2:
+	start chrome https://github.com/timcrowe91/Keyword.Scatter
 	
 assignment3:
 	start chrome https://timcrowe91.shinyapps.io/GapminderApp/
