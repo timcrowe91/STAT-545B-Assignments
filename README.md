@@ -20,7 +20,7 @@ This assignment was based on automation, and the majority was working with Makef
 
 ## Dependencies
 
-I will list all the packages I used throughout this project:
+Here, I will list all the R packages (and any other software) I used throughout this project:
 
 ### Assignment 1
 
@@ -49,3 +49,4 @@ I will list all the packages I used throughout this project:
 
 * rmarkdown
 * tidyverse
+* Make software
