@@ -17,3 +17,35 @@ For this assignment, I created a shiny app which can be found [here](https://tim
 ### Assigment 4
 
 This assignment was based on automation, and the majority was working with Makefiles, including creating a Makefile in the root of the assignment repo. More details can be found in the "assignment-4b" repository.
+
+## Dependencies
+
+I will list all the packages I used throughout this project:
+
+### Assignment 1
+
+* tidyverse
+* gapminder
+* testthat
+* devtools
+* datateachr [devtools::install_github("UBC-MDS/datateachr")]
+* palmerpenguins
+* broom
+
+### Assignment 2
+
+* tidyverse
+* testthat
+* gapminder
+
+### Assignment 3
+
+* tidyverse
+* gapminder
+* shiny
+* shinythemes
+
+### Assignment 4
+
+* rmarkdown
+* tidyverse
