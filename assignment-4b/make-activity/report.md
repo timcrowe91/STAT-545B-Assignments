@@ -1,7 +1,7 @@
 ---
 title: "English Word lengths"
 author: "Jenny Bryan"
-date: "03 December, 2020"
+date: "04 December, 2020"
 output:
   html_document:
     keep_md: yes
@@ -9,7 +9,7 @@ output:
 
 
 
-On most *nix systems, the file `/usr/share/dict/words` contains a bunch of words. On my machine, it contains 235970 words.
+On most *nix systems, the file `/usr/share/dict/words` contains a bunch of words. On my machine, it contains 53499 words.
 
 I computed the length of each word, i.e. the number of characters, and tabulated how many words consist of 1 character, 2 characters, etc.
 
