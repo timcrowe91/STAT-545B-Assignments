@@ -1,7 +1,7 @@
 ---
 title: "Assignment 5-B"
 subtitle: "Version 1.0.0"
-output: html_document
+output: github_document
 ---
 
 + __Leader__: Victor Yuan

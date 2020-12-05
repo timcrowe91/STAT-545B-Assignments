@@ -1,0 +1,75 @@
+---
+title: "Assignment 5-B Answers"
+subtitle: "Version 1.0.0"
+author: "Tim Crowe"
+output: github_document
+---
+
++ __Leader__: Victor Yuan
++ __Reviewer__: Diana Lin & Vincenzo Coia
++ __Deadline__: Saturday, December 12, 2020 at 23:59 PST
+
++ __Total Points__: 20 
+
+## Option A -- Strings in R
+
+Complete the following two exercises using concepts and tools covered in class (i.e. `stringr`, regex, tidyverse, etc.)
+
+### Exercise 1 (9 points)
+
+_Take a Jane Austen book contained in the `janeaustenr` package, or another book from some other source. Make a plot of the most common words in the book, removing "stop words" of your choosing (words like "the", "a", etc.) or stopwords from a pre-defined source, like the `stopwords` package or `tidytext::stop_words`._
+
+```{r include = FALSE}
+
+library(janeaustenr)
+library(stopwords)
+library(tidyverse)
+
+```
+
+
+```{r}
+
+stopwords_list <- stopwords(language = "en", source = "snowball", simplify = TRUE)
+emma_words <- str_c(emma, collapse = " ")
+
+```
+
+```{r}
+
+emma_words_unique <- emma_words %>%
+  str_remove_all("[^ a-zA-Z]") %>% # remove all punctuation
+  str_to_lower() %>% 
+  str_split(" ") %>%
+  .[[1]] %>%
+  unique()
+
+```
+```{r}
+
+emma_words_unique[emma_words_unique]
+
+```
+
+### Exercise 2 (9 points)
+
+_Make a function that converts words to your own version of Pig Latin._
+
+_The specific input and output that you decide upon is up to you. Don't forget to implement good function-making hygiene: we'll be looking for documentation (being sure to describe your Pig Latin conversion), examples of applying the function, 3 non-redundant tests, appropriate use of arguments, and appropriate amount of checking for proper input._
+
+_Your Pig Latin should incorporate two components:_
+
+**Rearrangement component** 
+
+_The default Pig Latin rearrangement rule, [as per Wikipedia](https://en.wikipedia.org/wiki/Pig_Latin#Background), moves beginning letters to the end:_
+
+> 1. For words that begin with consonant sounds, all letters before the initial vowel are placed at the end of the word sequence.
+> 2. When words begin with consonant clusters (multiple consonants that form one sound), the whole sound is added to the end
+> 3. For words beginning with vowel sounds, one removes the initial vowel(s) along with the first consonant or consonant cluster.
+
+_Modify this somehow. Maybe you move letters from the end to the beginning, or you change the rules altogether, keeping a similar level of complexity._
+
+**Addition component**
+
+_The default Pig Latin addition rule is to add "ay" to the end of the word, after rearranging the letters of the word. You should choose some other addition rule._
+

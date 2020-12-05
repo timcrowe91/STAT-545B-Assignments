@@ -1,5 +1,11 @@
-## Welcome to your Assignment 5B!
+## Assignment 5B
 
-You may modify this README accordingly to the instructions from assignment 5B, *including* modifying the title of the README to be the name of your app instead of the current "Welcome to your Assignment 5B!".
+For this assignment, I had the choice of 3 options to complete:
 
-Reminder: please indicate your choice of assignment: Option A, B, or C.
++ **Option A:** Strings Regex
++ **Option B:** R Package 
++ **Option C:** Shiny App
+
+Full details of each option can be found in the `assignment-5B.md` file.
+
+I went with the first option - completing exercises on regular expressions. My solutions for the exercises can be found in the `assignment-5B-answers.md` file.
