@@ -27,27 +27,49 @@ library(tidyverse)
 
 ```
 
+I will be analysing the book "Emma" by Jane Austen to find the most common words. For the "stop words", I will use the `stopwords` package.
+
+The `janeaustenr` package provides a character vector which contains the entire text of the novel "Emma" (along with her other novels). In order to do the analysis on this novel, I will remove all punctuation and change all upper case characters to lower case.
+
+I will then create a tibble in which every single word in the novel is it's own row, and remove all the words contained in the list mentioned previously in order to show what the most common words in the novel are.
+
+Step by step annotations of what I am doing is provided in the code:
 
 ```{r}
 
+# use stopwords package and take default list of words to remove from the results
 stopwords_list <- stopwords(language = "en", source = "snowball", simplify = TRUE)
-emma_words <- str_c(emma, collapse = " ")
+
+# remove punctuation and convert all letters to lower case
+emma_words_simplified <- emma %>%
+  str_remove_all("[^ a-zA-Z]") %>%
+  str_to_lower()
+
+# create tibble for dplyr analysis
+emma_tibble <- enframe(emma_words_simplified, value = "Text")
+
+# modify tibble to get desired list of most common words in the book
+emma_common_words <- emma_tibble %>%
+  separate_rows(Text, sep = " ") %>% # make each word in text be it's own row
+  rename(Word = Text) %>%
+  filter(Word %in% stopwords_list == FALSE) %>% # remove words from the stoplist
+  filter(Word != "") %>% # remove empty entries
+  count(Word) %>%
+  arrange(desc(n))
 
 ```
 
+Now we have a tibble of all the unique words in the novel, except those found in `stopwords_list`, in descending order from most common to least. A plot of the 30 most common words follows:
+
 ```{r}
 
-emma_words_unique <- emma_words %>%
-  str_remove_all("[^ a-zA-Z]") %>% # remove all punctuation
-  str_to_lower() %>% 
-  str_split(" ") %>%
-  .[[1]] %>%
-  unique()
-
-```
-```{r}
-
-emma_words_unique[emma_words_unique]
+emma_common_words %>%
+  top_n(30) %>%
+  ggplot(aes(x = reorder(Word, n), y = n)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(y = "# Occurences", x = "") +
+  theme_bw()
 
 ```
 

@@ -18,6 +18,10 @@ For this assignment, I created a shiny app which can be found [here](https://tim
 
 This assignment was based on automation, and the majority was working with Makefiles, including creating a Makefile in the root of the assignment repo. More details can be found in the "assignment-4b" repository.
 
+### Assigment 5
+
+In this final assignment we had 3 options to explore. I chose to complete some exercises on the topic of regular expressions. Full details found in the "assignment-5b" repository.
+
 ## Dependencies
 
 Here, I will list all the R packages (and any other software) I used throughout this project:
@@ -50,3 +54,9 @@ Here, I will list all the R packages (and any other software) I used throughout 
 * rmarkdown
 * tidyverse
 * Make software
+
+### Assignment 5
+
+* tidyverse
+* janeaustenr
+* stopwords
