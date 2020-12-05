@@ -242,3 +242,5 @@ test_that("pig_latin tests", {
   
 })
 ```
+
+    ## Test passed
