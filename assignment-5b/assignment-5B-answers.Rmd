@@ -95,3 +95,54 @@ _Modify this somehow. Maybe you move letters from the end to the beginning, or y
 
 _The default Pig Latin addition rule is to add "ay" to the end of the word, after rearranging the letters of the word. You should choose some other addition rule._
 
+
+
+
+```{r}
+
+### STANDARD PIG LATIN
+
+input = "spring"
+
+word <- str_to_lower(input)
+vowel_pos <- str_locate(word, "[aeiouAEIOU]")[1]
+{if (vowel_pos == 1) 
+  paste0(word, "way") 
+  else 
+  paste0(str_sub(word, vowel_pos, -1), str_sub(word, 1, vowel_pos - 1), "ay")}
+       
+
+```
+
+```{r}
+
+### NEW PIG LATIN
+
+input = "water"
+
+word <- str_to_lower(input)
+
+# shift vowels up
+word <- gsubfn(".", list("a" = "e", "e" = "i", "i" = "o", "o" = "u", "u" = "a"), word)
+
+# find location of first vowel
+vowel_pos <- str_locate(word, "[aeiouAEIOU]")[1]
+
+# if word starts with vowel, add "yay" to end
+# if word starts with consonant, move first consonant cluster (until first vowel) to end and add "nay"
+{if (vowel_pos == 1) 
+  paste0(word, "way") 
+  else 
+  paste0(str_sub(word, vowel_pos, -1), str_sub(word, 1, vowel_pos - 1), "ay")}
+       
+
+```
+
+ERRORS
+
+* numbers
+* more than one word (ie includes punctuation or " " --- error [^a-zA-Z])
+
+WARNING
+
+* lower case
