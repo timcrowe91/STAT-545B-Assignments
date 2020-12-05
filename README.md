@@ -1,10 +1,10 @@
 # STAT 545-B Assignments
 
-In this repository you can find the assigments I have worked on for STAT 545-B.
+In this repository you can find the assignments I have worked on for STAT 545-B.
 
 ### Assigment 1
 
-This assignment focused on functions and model evaluation. Full details can be found in the "assigment-1b" repository.
+This assignment focused on functions and model evaluation. Full details can be found in the "assignment-1b" repository.
 
 ### Assigment 2
 
