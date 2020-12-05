@@ -60,3 +60,5 @@ Here, I will list all the R packages (and any other software) I used throughout 
 * tidyverse
 * janeaustenr
 * stopwords
+* gsubfn
+* testthat

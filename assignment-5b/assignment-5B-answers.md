@@ -111,3 +111,134 @@ of complexity.*
 *The default Pig Latin addition rule is to add “ay” to the end of the
 word, after rearranging the letters of the word. You should choose some
 other addition rule.*
+
+### The Function
+
+``` r
+pig_latin <- function(word, reverse = TRUE){
+ 
+  if(str_detect(word, "[^a-zA-Z]")) stop("Please choose a single word consisting only of letters of the alphabet")
+  if(str_detect(word, "[aeiouAEIOU]", negate = TRUE)) stop("Please choose a word containing at least one vowel and one consonant")
+  if(str_detect(word, "[^aeiouAEIOU]", negate = TRUE)) stop("Please choose a word containing at least one vowel and one consonant")
+  if(str_detect(word, "[A-Z]")) message("Word converted to lower case")
+  
+  vowel_pos <- str_locate(word, "[aeiouAEIOU]")[1] # find position of first vowel
+  
+  word %>%
+    str_to_lower(.) %>% # lower case
+    gsubfn(".", list("a" = "e", "e" = "i", "i" = "o", "o" = "u", "u" = "a"), .) %>% # shift vowels
+    {if (vowel_pos == 1) # output - depending on whether word starts with vowel or not
+      paste0(., "woo") 
+      else 
+      paste0(str_sub(., vowel_pos, -1), 
+             {if (reverse)
+               paste0(rev(str_split(str_sub(., 1, vowel_pos - 1), "")[[1]]), collapse = "") # reverse order of consonants
+               else
+               paste0(str_sub(., 1, vowel_pos - 1))},
+             "oo")}
+    
+}
+```
+
+#### Description
+
+My “version” of Pig Latin uses the following logic:
+
+1.  If the word begins with a consonant, all letters up until the first
+    vowel are removed and placed at the end of the word in reverse order
+    if `reverse = TRUE` or in unchanged order otherwise
+2.  All vowels in the word are replaced with the next vowel
+    alphabetically (ie “a” becomes “e”, “e” becomes “i”, “i” becomes
+    “o”, “o” becomes “u” and finally “u” loops back over and becomes
+    “a”)
+3.  If the word begins with a consonant then “oo” is added to the end of
+    it, if it begins with a vowel then “woo” is added to the end
+
+#### Example
+
+Take the word “spring” using `reverse = TRUE`. From the steps above we
+get:
+
+1.  The word begins with a consonant, so we take all consonants up until
+    the first vowel (“spr”), and move them to the end of the word in
+    reverse order. This gives us “ingrps”
+2.  “i” is the only vowel in the word, so this becomes an “o”, giving us
+    “ongrps”
+3.  As it began with a consonant, we add “oo” to the end of it, finally
+    giving us “ongrpsoo”
+
+We can confirm this (along with showing some other examples):
+
+``` r
+pig_latin("spring")
+```
+
+    ## [1] "ongrpsoo"
+
+``` r
+pig_latin("spring", reverse = FALSE)
+```
+
+    ## [1] "ongsproo"
+
+``` r
+pig_latin("five")
+```
+
+    ## [1] "ovifoo"
+
+``` r
+pig_latin("onomatopoeia")
+```
+
+    ## [1] "unumetupuioewoo"
+
+``` r
+pig_latin("waterfall")
+```
+
+    ## [1] "etirfellwoo"
+
+#### Arguments
+
+  - `word`: The word to be put into the function. This should contain
+    only letters of the alphabet, and have at least one vowel and one
+    consonant
+  - `reverse`: Reverses the order of the consonant group (if applicable)
+    that gets moved from the start of the word to the end. Default set
+    to `TRUE`
+
+#### Errors / Messages
+
+An error message will be shown if:
+
+  - `word` argument contains anything other than letters of the alphabet
+  - `word` argument doesn’t contain at least one vowel and one consonant
+
+Additionally, if the input contains upper case letters, a message is
+written advising that the word has been converted to lower case:
+
+``` r
+pig_latin("STATISTICS")
+```
+
+    ## Word converted to lower case
+
+    ## [1] "etostocstsoo"
+
+#### Tests
+
+``` r
+test_that("pig_latin tests", {
+  
+  expect_error(pig_latin("ooooo"))
+  expect_error(pig_latin("hello there"))
+  expect_error(pig_latin("x"))
+  expect_error(pig_latin("what?"))
+  expect_equal(pig_latin("knight"), "oghtnkoo")
+  expect_equal(pig_latin("knight", reverse = FALSE), "oghtknoo")
+  expect_equal(pig_latin("hello"), "illuhoo")
+  expect_equal(pig_latin("underwater"), "andirwetirwoo")
+  
+})
+```
